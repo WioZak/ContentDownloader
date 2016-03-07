@@ -20,9 +20,6 @@ namespace ContentDownloader
 
         private void DownloadButton_Click(object sender, RoutedEventArgs e)
         {
-            //throw new NotImplementedException();
-            //MyLabel.Content = "Hello!";
-            //MyLabel.Content = downloadedText;
             string downloadedText = ReadTextFromUrl(@"https://akrzemi1.wordpress.com/feed/");
             XmlDocument xmlText = new XmlDocument();
             xmlText.LoadXml(downloadedText);
@@ -39,8 +36,6 @@ namespace ContentDownloader
 
         public static string ReadTextFromUrl(string url)
         {
-            // WebClient is still convenient
-            // Assume UTF8, but detect BOM - could also honor response charset I suppose
             using (var client = new System.Net.WebClient())
             using (var stream = client.OpenRead(url))
             using (var textReader = new StreamReader(stream, Encoding.UTF8, true))

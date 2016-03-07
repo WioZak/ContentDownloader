@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml;
 
 namespace ContentDownloader
@@ -35,9 +23,18 @@ namespace ContentDownloader
             //throw new NotImplementedException();
             //MyLabel.Content = "Hello!";
             //MyLabel.Content = downloadedText;
+            string downloadedText = ReadTextFromUrl(@"https://akrzemi1.wordpress.com/feed/");
+            XmlDocument xmlText = new XmlDocument();
+            xmlText.LoadXml(downloadedText);
+            XmlNode root = xmlText.DocumentElement;
+            XmlNodeList nodeList = root.SelectNodes("/rss/channel/item/title");
+
             MyTextBox.Clear();
-            MyTextBox.AppendText(downloadedText);
-            
+
+            for (int i = 0; i < 5; i++)
+            {
+                MyTextBox.AppendText(nodeList[i].InnerText + "\n");
+            } 
         }
 
         public static string ReadTextFromUrl(string url)
@@ -51,10 +48,5 @@ namespace ContentDownloader
                 return textReader.ReadToEnd();
             }
         }
-
-        string downloadedText = ReadTextFromUrl(@"https://akrzemi1.wordpress.com/feed/");
-
-        XmlDocument.LoadXml(downloadedText);
-        
     }
 }

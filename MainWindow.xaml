@@ -1,0 +1,14 @@
+﻿<Window x:Class="ContentDownloader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContentDownloader"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="530">
+    <Grid>
+        <Button x:Name="DownloadButton" Content="Download content" HorizontalAlignment="Left" Height="43" Margin="10,10,0,0" VerticalAlignment="Top" Width="497"/>
+        <TextBox x:Name="MyTextBox" HorizontalAlignment="Left" Height="238" Margin="10,75,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="497" RenderTransformOrigin="0.498,2.114"/>
+
+    </Grid>
+</Window>
